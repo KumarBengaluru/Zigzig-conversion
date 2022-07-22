@@ -1,0 +1,63 @@
+def encoder(a,numrows):
+    b = len(a)
+
+    l = [[] for i in range(numrows)]
+
+    c = int(b / 2)
+
+    k = 0
+    t = 0
+    ra=0
+    for z in range(c):
+        if (z % 2 == 0):
+            while (k <= (numrows-1)):
+                if t >= b:
+                    break
+                l[k].append(a[t])
+                t = t + 1
+                k = k + 1
+            k = 0
+        else:
+            while (ra <= (numrows-1)):
+                if t >= b:
+                    break
+                if (ra%2 == 1):
+                    l[ra].append(a[t])
+                    t = t + 1
+                ra=ra+1
+            ra=0
+        
+         
+    r = ''
+    for m in range(numrows):
+        s = ''.join(l[m])
+        r = r + s
+
+    
+    print(l)
+    ga = 0
+    joi = ''
+    for z in range(numrows):
+        all = len(l[z])
+        if (z % 2 == 0):
+            while (ga < all):
+                joi = joi + l[z][ga] + "   "
+                ga = ga + 1
+            ga = 0
+            print(joi)
+            joi = ''
+
+        if (z % 2 == 1):
+            while (ga < all):
+                joi = joi + l[z][ga] + " "
+                ga = ga + 1
+            print(joi)
+            joi = ''
+            ga = 0
+            
+    return r
+
+string_value="PAYPALISHIRING"
+print("Input:",string_value)
+output=encoder(string_value,4)
+print("Output:",output)
